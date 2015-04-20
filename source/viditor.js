@@ -1,16 +1,26 @@
+var Reqwest = require("reqwest")
 var Bluebird = require("bluebird")
 
-var Viditor = {
+window.Viditor = {
 	getYoutubeVideo: function() {
 		return new Bluebird(function(resolve, reject) {
-			window.setTimeout(function() {
-				resolve("OK")
-			}, 1000)
+			Reqwest({
+				"method": "POST",
+				"contentType": "application/json",
+				"url": "http://localhost:8080/v2/fusion",
+				"data": JSON.stringify({
+					"format": "mp4"
+				}),
+				"type": "json"
+			})
+			.then(function(response) {
+				resolve(response)
+			})
 		})
 	}
 }
 
-//todo: publish to bower and npm.
+//todo: publish to npm.
 //todo: write a readme.
 
 module.exports = Viditor
