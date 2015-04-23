@@ -3,8 +3,52 @@
 <html>
 <script src="viditor.js"></script>
 <script>
-Viditor.getYoutubeVideo().then(function(video) {
-	console.log(video)
+var protovideo = {
+    "width": 1280,
+    "height": 720,
+    "assets": {
+        "first": {
+            "url": "https://www.youtube.com/watch?v=UiyDmqO59QE"
+        },
+        "second": {
+            "url": "https://www.youtube.com/watch?v=kfchvCyHmsc"
+        }
+    },
+    "clips": [
+        {
+            "asset": "first",
+            "tick": 0,
+            "track": 0,
+            "trim": {
+                "left": 2,
+                "right": 0
+            },
+            "size": {
+                "width": 640,
+                "height": 360
+            }
+        },
+        {
+            "asset": "second",
+            "tick": 4,
+            "track": 1,
+            "trim": {
+                "left": 2,
+                "right": 0
+            },
+            "size": {
+                "width": 640,
+                "height": 360
+            },
+            "offset": {
+                "x": 640,
+                "y": 360
+            }
+        }
+    ]
+}
+Viditor.fusion(protovideo).then(function(video) {
+	window.location = video.content
 })
 </script>
 </html>
