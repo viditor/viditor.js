@@ -1,19 +1,17 @@
 var Reqwest = require("reqwest")
-var Bluebird = require("bluebird")
 
 window.Viditor = {
-	fusion: function(protovideo) {
-		return new Bluebird(function(resolve, reject) {
-			Reqwest({
-				"method": "POST",
-				"contentType": "application/json",
-				"url": "http://localhost:8080/v2/fusion",
-				"data": JSON.stringify(protovideo),
-				"type": "json"
-			})
-			.then(function(response) {
-				resolve(response)
-			})
+	nimbus_url: "http://localhost:8080",
+	fusion: function(protovideo, callback) {
+		Reqwest({
+			"method": "POST",
+			"contentType": "application/json",
+			"url": this.nimbus_url + "/v2/fusion",
+			"data": JSON.stringify(protovideo),
+			"type": "json"
+		})
+		.then(function(response) {
+			callback(response)
 		})
 	}
 }

@@ -1,22 +1,22 @@
 <!doctype html>
 
 <html>
-<script src="viditor.js"></script>
+<script src="dist/viditor.js"></script>
 <script>
 var protovideo = {
     "width": 1280,
     "height": 720,
     "assets": {
-        "first": {
+        "missing": {
             "url": "https://www.youtube.com/watch?v=UiyDmqO59QE"
         },
-        "second": {
+        "late for work": {
             "url": "https://www.youtube.com/watch?v=kfchvCyHmsc"
         }
     },
     "clips": [
         {
-            "asset": "first",
+            "asset": "missing",
             "tick": 0,
             "track": 0,
             "trim": {
@@ -29,7 +29,7 @@ var protovideo = {
             }
         },
         {
-            "asset": "second",
+            "asset": "late for work",
             "tick": 4,
             "track": 1,
             "trim": {
@@ -47,7 +47,7 @@ var protovideo = {
         }
     ]
 }
-Viditor.fusion(protovideo).then(function(video) {
+Viditor.fusion(protovideo, function(video) {
 	window.location = video.content
 })
 </script>
